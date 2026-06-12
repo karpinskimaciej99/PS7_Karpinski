@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
@@ -56,5 +57,23 @@ public class CalculatorTest {
         int result = calculator.add("//;\n1;2");
 
         assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    void shouldThrowExceptionWhenNegativeNumberGiven() {
+        Calculator calculator = new Calculator();
+
+        assertThatThrownBy(() -> calculator.add("1,-2,3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("negatives not allowed: -2");
+    }
+
+    @Test
+    void shouldThrowExceptionWithAllNegativeNumbers() {
+        Calculator calculator = new Calculator();
+
+        assertThatThrownBy(() -> calculator.add("1,-2,-3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("negatives not allowed: -2, -3");
     }
 }

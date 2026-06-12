@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculator {
 
     public int add(String numbers) {
@@ -16,9 +19,20 @@ public class Calculator {
 
         String[] parts = numberPart.split(delimiter);
         int sum = 0;
+        List<String> negatives = new ArrayList<>();
 
         for (String part : parts) {
-            sum += Integer.parseInt(part);
+            int number = Integer.parseInt(part);
+
+            if (number < 0) {
+                negatives.add(part);
+            }
+
+            sum += number;
+        }
+
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("negatives not allowed: " + String.join(", ", negatives));
         }
 
         return sum;
