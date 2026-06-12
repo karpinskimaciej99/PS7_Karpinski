@@ -1,5 +1,6 @@
 public class Calculator {
-    public int add() {
-            return 0;
 
+    public int add(String numbers) {
+        return 0;
+    }
 }
