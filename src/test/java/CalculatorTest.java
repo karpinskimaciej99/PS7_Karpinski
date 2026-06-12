@@ -12,4 +12,22 @@ public class CalculatorTest {
 
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    void shouldReturnNumberWhenSingleNumberGiven() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("1");
+
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    void shouldReturnSumWhenTwoNumbersGiven() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("1,2");
+
+        assertThat(result).isEqualTo(3);
+    }
 }
