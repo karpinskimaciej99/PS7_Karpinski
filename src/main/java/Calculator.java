@@ -5,7 +5,8 @@ public class Calculator {
             return 0;
         }
 
-        String[] parts = numbers.split(",");
+        String normalizedNumbers = numbers.replace("\n", ",");
+        String[] parts = normalizedNumbers.split(",");
         int sum = 0;
 
         for (String part : parts) {

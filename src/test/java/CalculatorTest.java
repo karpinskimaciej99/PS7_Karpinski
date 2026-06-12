@@ -39,4 +39,13 @@ public class CalculatorTest {
 
         assertThat(result).isEqualTo(10);
     }
+
+    @Test
+    void shouldReturnSumWhenNewLineBetweenNumbersGiven() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("1\n2,3");
+
+        assertThat(result).isEqualTo(6);
+    }
 }
