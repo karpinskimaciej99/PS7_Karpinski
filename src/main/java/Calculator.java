@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Calculator {
 
@@ -13,8 +14,14 @@ public class Calculator {
 
         if (numbers.startsWith("//")) {
             int newLineIndex = numbers.indexOf("\n");
-            delimiter = numbers.substring(2, newLineIndex);
+            String delimiterPart = numbers.substring(2, newLineIndex);
             numberPart = numbers.substring(newLineIndex + 1);
+
+            if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
+                delimiter = Pattern.quote(delimiterPart.substring(1, delimiterPart.length() - 1));
+            } else {
+                delimiter = Pattern.quote(delimiterPart);
+            }
         }
 
         String[] parts = numberPart.split(delimiter);

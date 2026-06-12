@@ -85,4 +85,13 @@ public class CalculatorTest {
 
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    void shouldReturnSumWhenDelimiterOfAnyLengthGiven() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("//[***]\n1***2***3");
+
+        assertThat(result).isEqualTo(6);
+    }
 }
