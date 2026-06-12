@@ -94,4 +94,22 @@ public class CalculatorTest {
 
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    void shouldReturnSumWhenMultipleSingleCharacterDelimitersGiven() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("//[*][%]\n1*2%3");
+
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void shouldReturnSumWhenMultipleLongDelimitersGiven() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("//[***][%%%]\n1***2%%%3");
+
+        assertThat(result).isEqualTo(6);
+    }
 }

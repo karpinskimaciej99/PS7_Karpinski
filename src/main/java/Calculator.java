@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
@@ -18,7 +19,14 @@ public class Calculator {
             numberPart = numbers.substring(newLineIndex + 1);
 
             if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
-                delimiter = Pattern.quote(delimiterPart.substring(1, delimiterPart.length() - 1));
+                List<String> delimiters = new ArrayList<>();
+                Matcher matcher = Pattern.compile("\\[(.*?)]").matcher(delimiterPart);
+
+                while (matcher.find()) {
+                    delimiters.add(Pattern.quote(matcher.group(1)));
+                }
+
+                delimiter = String.join("|", delimiters);
             } else {
                 delimiter = Pattern.quote(delimiterPart);
             }
