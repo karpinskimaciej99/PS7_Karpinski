@@ -6,11 +6,12 @@ public class Calculator {
         }
 
         String[] parts = numbers.split(",");
+        int sum = 0;
 
-        if (parts.length == 1) {
-            return Integer.parseInt(parts[0]);
+        for (String part : parts) {
+            sum += Integer.parseInt(part);
         }
 
-        return Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]);
+        return sum;
     }
 }

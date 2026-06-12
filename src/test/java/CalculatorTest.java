@@ -30,4 +30,13 @@ public class CalculatorTest {
 
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    void shouldReturnSumWhenUnknownAmountOfNumbersGiven() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("1,2,3,4");
+
+        assertThat(result).isEqualTo(10);
+    }
 }
