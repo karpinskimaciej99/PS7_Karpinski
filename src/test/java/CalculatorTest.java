@@ -48,4 +48,13 @@ public class CalculatorTest {
 
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    void shouldReturnSumWhenCustomDelimiterGiven() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("//;\n1;2");
+
+        assertThat(result).isEqualTo(3);
+    }
 }
