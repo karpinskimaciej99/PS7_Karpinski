@@ -76,4 +76,13 @@ public class CalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("negatives not allowed: -2, -3");
     }
+
+    @Test
+    void shouldIgnoreNumbersGreaterThan1000() {
+        Calculator calculator = new Calculator();
+
+        int result = calculator.add("2,1001");
+
+        assertThat(result).isEqualTo(2);
+    }
 }
